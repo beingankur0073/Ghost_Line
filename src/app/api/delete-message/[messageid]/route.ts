@@ -6,12 +6,14 @@ import { authOptions } from '../../auth/[...nextauth]/options';
 
 export async function DELETE(
   request: Request,
-  context: { params: { messageid: string } }
+  { params }: { params: { messageid: string } }
 ) {
-  const messageId = context.params;
+  const { messageid } = params; 
   await dbConnect();
+
   const session = await getServerSession(authOptions);
-  const _user: User = session?.user;
+  const _user = session?.user as User;
+
   if (!session || !_user) {
     return Response.json(
       { success: false, message: 'Not authenticated' },
@@ -22,7 +24,7 @@ export async function DELETE(
   try {
     const updateResult = await UserModel.updateOne(
       { _id: _user._id },
-      { $pull: { messages: { _id: messageId } } }
+      { $pull: { messages: { _id: messageid } } } // ✅ use the string directly
     );
 
     if (updateResult.modifiedCount === 0) {
