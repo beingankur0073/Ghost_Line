@@ -8,7 +8,7 @@ import { Toaster } from '@/components/ui/sonner';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'True Feedback',
+  title: 'Ghost line',
   description: 'Real feedback from real people.',
 };
 
