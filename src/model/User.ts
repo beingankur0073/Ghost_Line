@@ -1,7 +1,8 @@
-import { create } from "domain";
+
 import mongoose,{Schema,Document} from "mongoose";
 
 export interface Message extends Document{
+    _id: string;     
     content:string,
     createdAt:Date,
 }
@@ -70,7 +71,3 @@ const UserSchema:Schema<User> =new Schema({
 const UserModel=(mongoose.models.User as mongoose.Model<User>) || mongoose.model<User>("User",UserSchema)
 
 export default UserModel
-
-
-
-

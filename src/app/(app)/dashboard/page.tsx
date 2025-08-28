@@ -16,7 +16,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { AcceptMessageSchema } from '@/schemas/acceptMessageSchema';
 import { toast } from 'sonner';
-import MessageCard from '@/components/MessageCard';
+import {MessageCard} from '@/components/MessageCard';
 
 function UserDashboard() {
   const [messages, setMessages] = useState<Message[]>([]);
